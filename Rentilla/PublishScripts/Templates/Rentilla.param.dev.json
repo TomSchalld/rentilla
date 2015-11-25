@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "Rentilla"
+  },
+  "hostingPlanName": {
+    "value": ".netClass"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "e02c8948-c410-4d4a-9af6-4c94ee8e21f0"
+  },
+  "resourceGroup": {
+    "value": "finnishsauna"
+  }
+}
