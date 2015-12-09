@@ -7,5 +7,6 @@ namespace Rentilla.Models
 {
     public class Rank
     {
+        public int MyProperty { get; set; }
     }
 }
