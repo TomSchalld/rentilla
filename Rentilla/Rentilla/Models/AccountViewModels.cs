@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rentilla.Models
@@ -85,7 +86,13 @@ namespace Rentilla.Models
 
         [Required]
         public string LastName { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        public Address Adress { get; set; }
     }
+}
 
     public class ResetPasswordViewModel
     {
