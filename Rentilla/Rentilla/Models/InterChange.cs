@@ -9,6 +9,13 @@ using System.Web.UI.WebControls;
 
 namespace Rentilla.Models
 {
+    public enum AllowanceType
+    {
+        Money,
+        Food,
+        Nothing,
+        Other
+    }
     public class InterChange
     {
         public int ID { get; set; }
@@ -16,8 +23,10 @@ namespace Rentilla.Models
         public string Titel { get; set; }
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
-        [Required(ErrorMessage = "An allowance is required.")]
-        public Allowance Allowance { get; set; }
+        [Required(ErrorMessage = "Type is required.")]
+        public AllowanceType TypeOfAllowance { get; set; }
+        [Required(ErrorMessage = "Description for the Allowance is required.")]
+        public string AllowanceDescription { get; set; }
     }
     public class OfferToDem : InterChange
     {
@@ -27,23 +36,7 @@ namespace Rentilla.Models
     {
 
     }
-    public enum AllowanceType
-    {
-        Money,
-        Food,
-        Nothing,
-        Other
-    }
-    public class Allowance
-    {
-        public int ID { get; set; }
-        [Required(ErrorMessage = "Type is required.")]
-        public AllowanceType TypeOfAllowance { get; set; }
-        [Required(ErrorMessage = "Description is required.")]
-        public string Description { get; set; }
-
-    }
-
+   
     public class Offer : InterChange
     {
         public List<DemandToOff> DemandsToOffer { get; set; }
@@ -68,10 +61,6 @@ namespace Rentilla.Models
     }
     public class InterchangeDBContext : DbContext
     {
-        public InterchangeDBContext()
-        : base("RentillaDB")
-        {
-        }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<OfferToDem> OffersToDemands { get; set; }
         public DbSet<Demand> Demands { get; set; }
