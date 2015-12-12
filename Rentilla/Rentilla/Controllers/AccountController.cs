@@ -22,6 +22,7 @@ namespace Rentilla.Controllers
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -141,6 +142,7 @@ namespace Rentilla.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Building = "";
             return View();
         }
 
