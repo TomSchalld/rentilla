@@ -54,9 +54,9 @@ namespace Rentilla
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "971967062849358",
+               appSecret: "500bb01459026187a4aaa1c80fd1e0f3");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

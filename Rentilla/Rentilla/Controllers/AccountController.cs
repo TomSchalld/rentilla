@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Rentilla.Models;
+using System.Diagnostics;
 
 namespace Rentilla.Controllers
 {
@@ -367,6 +368,10 @@ namespace Rentilla.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+                //intercept here!
+                
+                Trace.WriteLine(info.Login);
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
