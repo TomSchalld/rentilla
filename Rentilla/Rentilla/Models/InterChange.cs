@@ -66,18 +66,18 @@ namespace Rentilla.Models
         public List<OfferToDem> OffersToDemand { get; set; }
     
     }
-    public class OfferDBContext : DbContext
+    public class InterchangeDBContext : DbContext
     {
+        public InterchangeDBContext()
+        : base("RentillaDB")
+        {
+        }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<OfferToDem> OffersToDemands { get; set; }
-        
-    }
-    public class DemandDBContext : DbContext
-    {
         public DbSet<Demand> Demands { get; set; }
         public DbSet<DemandToOff> DemandsToOffers { get; set; }
-       
 
     }
+    
 
 }
