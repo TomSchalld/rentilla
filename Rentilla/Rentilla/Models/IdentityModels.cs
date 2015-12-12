@@ -10,15 +10,19 @@ namespace Rentilla.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
-    {
+    {   [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Required]
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
+        [Required]
         [Display(Name = "Profile Picture")]
-        public String Picture { get; set; }
+        public string Picture { get; set; }
+        [Required]
         [Display(Name = "Address")]
         public Address Address { get; set; }
 

@@ -82,15 +82,17 @@ namespace Rentilla.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
+        [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public Address Adress { get; set; }
+        public Address Address { get; set; }
     }
 
 
