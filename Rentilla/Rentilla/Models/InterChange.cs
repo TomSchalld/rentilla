@@ -16,14 +16,14 @@ namespace Rentilla.Models
         public string Titel { get; set; }
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
-        [Required(ErrorMessage = "Allowance is required.")]
+        [Required(ErrorMessage = "An allowance is required.")]
         public Allowance Allowance { get; set; }
     }
  
    
     public class Offer : InterChange
     {
-        public List<Demand> Demands { get; set; }
+        public List<DemandToOffer> DemandsToOffer { get; set; }
        
 
     }
@@ -40,8 +40,16 @@ namespace Rentilla.Models
         public DateTime DateStart { get; set; }
         //[Required(ErrorMessage = "End Date is required.")]
         public DateTime DateEnd { get; set; }
-        public LinkedList<Offer> Offers { get; set; }
+        public LinkedList<OfferToDemand> OffersToDemand { get; set; }
     
+    }
+    public class OfferToDemand :InterChange
+    {
+
+    }
+    public class DemandToOffer : InterChange
+    {
+
     }
     public class OfferDBContext : DbContext
     {

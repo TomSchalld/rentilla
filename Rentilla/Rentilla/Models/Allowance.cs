@@ -22,4 +22,5 @@ namespace Rentilla.Models
         public string Description { get; set; }
 
     }
+
 }
