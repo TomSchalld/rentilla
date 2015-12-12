@@ -8,9 +8,26 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Rentilla.Models
 {
+    public enum Building
+    {
+        A,
+        B
+    }
+    public class Address
+    {
+        public int ID { get; set; }
+        [Required]
+        [Display(Name = "Building Number")]
+        public Building BuildingNumber { get; set; }
+        [Required]
+        [Display(Name = "Appartment Number")]
+        public string AppartementNumber { get; set; }
+    }
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
-    {   [Required]
+    {
+
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
@@ -24,6 +41,7 @@ namespace Rentilla.Models
         [Required]
         [Display(Name = "Address")]
         public Address Address { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

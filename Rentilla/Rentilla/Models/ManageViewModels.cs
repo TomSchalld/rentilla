@@ -101,8 +101,5 @@ namespace Rentilla.Models
         public string LastName { get; set; }
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
-
-        [Required]
-        public Address Address { get; set; }
     }
 }
