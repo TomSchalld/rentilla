@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Rentilla.Models
 {
@@ -21,13 +23,19 @@ namespace Rentilla.Models
    
     public class Offer : InterChange
     {
-        public LinkedList<Demand> Demands { get; set; }
+        public List<Demand> Demands { get; set; }
        
 
     }
+    public enum Acceptance
+    {
+        Unanswered,
+        Accepted,
+        Refused
+    }
     public class Demand : InterChange
     {
-        public int Accepted { get; set; } //0 - No answer yet, 1 - Accepted, -1 - Refused
+        public Acceptance Accepted { get; set; } //0 - No answer yet, 1 - Accepted, 2 - Refused
         [Required(ErrorMessage = "Start Date is required.")]
         public DateTime DateStart { get; set; }
         [Required(ErrorMessage = "End Date is required.")]
@@ -38,11 +46,24 @@ namespace Rentilla.Models
     public class OfferDBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+        }
+
 
     }
     public class DemandDBContext : DbContext
     {
         public DbSet<Demand> Demands { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+        }
 
     }
 

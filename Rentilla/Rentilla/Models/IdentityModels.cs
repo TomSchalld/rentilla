@@ -19,7 +19,6 @@ namespace Rentilla.Models
         [Required]
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
-        [Required]
         [Display(Name = "Profile Picture")]
         public string Picture { get; set; }
         [Required]
