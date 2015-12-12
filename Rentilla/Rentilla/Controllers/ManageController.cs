@@ -330,8 +330,46 @@ namespace Rentilla.Controllers
 
             base.Dispose(disposing);
         }
+        //
+        // GET: /Manage/Manage
+        [AllowAnonymous]
+        public ActionResult Manage()
+        {
+            return View();
+        }
 
-#region Helpers
+        [HttpPost]
+        [ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Manage(EditProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Get the current application user
+
+                ApplicationUser Model = UserManager.FindById(User.Identity.GetUserId());
+
+                // Update the details
+                Model.Email = model.Email;
+                Model.DateOfBirth = model.DateOfBirth;
+                Model.FirstName = model.FirstName;
+                Model.LastName = model.LastName;
+                Model.UserName = model.FirstName + "." + model.LastName;
+                Model.Address = model.Address;
+
+                IdentityResult result = await UserManager.UpdateAsync(Model);
+
+                // However, it always succeeds inspite of not updating the database
+                if (!result.Succeeded)
+                {
+                    AddErrors(result);
+                }
+            }
+
+            return RedirectToAction("Manage");
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
