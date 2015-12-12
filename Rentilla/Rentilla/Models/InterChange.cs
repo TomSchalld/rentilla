@@ -36,9 +36,9 @@ namespace Rentilla.Models
     public class Demand : InterChange
     {
         public Acceptance Accepted { get; set; } //0 - No answer yet, 1 - Accepted, 2 - Refused
-        [Required(ErrorMessage = "Start Date is required.")]
+       // [Required(ErrorMessage = "Start Date is required.")]
         public DateTime DateStart { get; set; }
-        [Required(ErrorMessage = "End Date is required.")]
+        //[Required(ErrorMessage = "End Date is required.")]
         public DateTime DateEnd { get; set; }
         public LinkedList<Offer> Offers { get; set; }
     
@@ -46,24 +46,20 @@ namespace Rentilla.Models
     public class OfferDBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        }
+        
 
 
     }
     public class DemandDBContext : DbContext
     {
         public DbSet<Demand> Demands { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-        }
+        }*/
 
     }
 
