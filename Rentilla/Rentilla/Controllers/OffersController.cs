@@ -12,7 +12,7 @@ namespace Rentilla.Controllers
 {
     public class OffersController : Controller
     {
-        private OfferDBContext db = new OfferDBContext();
+        private InterchangeDBContext db = new InterchangeDBContext();
 
         // GET: Offers
         public ActionResult Index()

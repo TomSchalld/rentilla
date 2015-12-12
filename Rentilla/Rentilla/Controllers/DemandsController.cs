@@ -12,7 +12,7 @@ namespace Rentilla.Controllers
 {
     public class DemandsController : Controller
     {
-        private DemandDBContext db = new DemandDBContext();
+        private InterchangeDBContext db = new InterchangeDBContext();
 
         // GET: Demands
         public ActionResult Index()
