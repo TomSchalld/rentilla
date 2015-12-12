@@ -19,11 +19,11 @@ namespace Rentilla.Models
         [Required(ErrorMessage = "An allowance is required.")]
         public Allowance Allowance { get; set; }
     }
-    public class OfferToDemand : InterChange
+    public class OfferToDem : InterChange
     {
 
     }
-    public class DemandToOffer : InterChange
+    public class DemandToOff : InterChange
     {
 
     }
@@ -46,7 +46,7 @@ namespace Rentilla.Models
 
     public class Offer : InterChange
     {
-        public List<DemandToOffer> DemandsToOffer { get; set; }
+        public List<DemandToOff> DemandsToOffer { get; set; }
        
 
     }
@@ -63,20 +63,21 @@ namespace Rentilla.Models
         public DateTime DateStart { get; set; }
         //[Required(ErrorMessage = "End Date is required.")]
         public DateTime DateEnd { get; set; }
-        public List<OfferToDemand> OffersToDemand { get; set; }
+        public List<OfferToDem> OffersToDemand { get; set; }
     
     }
     public class OfferDBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
-        public DbSet<OfferToDemand> OffersToDemands { get; set; }
-
-
+        public DbSet<OfferToDem> OffersToDemands { get; set; }
+        
     }
     public class DemandDBContext : DbContext
     {
         public DbSet<Demand> Demands { get; set; }
-        public DbSet<DemandToOffer> DemandsToOffers { get; set; }
+        public DbSet<DemandToOff> DemandsToOffers { get; set; }
+       
+
     }
 
 }
