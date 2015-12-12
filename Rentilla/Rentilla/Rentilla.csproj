@@ -173,9 +173,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DemandsController.cs" />
+    <Compile Include="Controllers\DemandToOffsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
+    <Compile Include="Controllers\OfferToDemsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -304,6 +306,16 @@
     <Content Include="Views\Demands\Details.cshtml" />
     <Content Include="Views\Demands\Edit.cshtml" />
     <Content Include="Views\Demands\Index.cshtml" />
+    <Content Include="Views\DemandToOffs\Create.cshtml" />
+    <Content Include="Views\DemandToOffs\Delete.cshtml" />
+    <Content Include="Views\DemandToOffs\Details.cshtml" />
+    <Content Include="Views\DemandToOffs\Edit.cshtml" />
+    <Content Include="Views\DemandToOffs\Index.cshtml" />
+    <Content Include="Views\OfferToDems\Create.cshtml" />
+    <Content Include="Views\OfferToDems\Delete.cshtml" />
+    <Content Include="Views\OfferToDems\Details.cshtml" />
+    <Content Include="Views\OfferToDems\Edit.cshtml" />
+    <Content Include="Views\OfferToDems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
