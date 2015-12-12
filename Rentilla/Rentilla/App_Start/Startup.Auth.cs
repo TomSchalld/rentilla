@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Rentilla.Models;
+using System.Configuration;
 
 namespace Rentilla
 {
@@ -54,9 +55,32 @@ namespace Rentilla
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
+            var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            {
+                AppId = ConfigurationManager.AppSettings.Get("971967062849358"),
+                AppSecret = ConfigurationManager.AppSettings.Get("500bb01459026187a4aaa1c80fd1e0f3"),
+                Provider = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider()
+                {
+                    OnAuthenticated = (context) =>
+                    {
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:access_token", context.AccessToken, XmlSchemaString, "Facebook"));
+                        foreach (var x in context.User)
+                        {
+                            var claimType = string.Format("urn:facebook:{0}", x.Key);
+                            string claimValue = x.Value.ToString();
+                            if (!context.Identity.HasClaim(claimType, claimValue))
+                                context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Facebook"));
+
+                        }
+                        return Task.FromResult(0);
+                    }
+                }
+
+            };
+            app.UseFacebookAuthentication(facebookOptions);
+           /* app.UseFacebookAuthentication(
               appId: "971967062849358",
-               appSecret: "500bb01459026187a4aaa1c80fd1e0f3");
+               appSecret: "500bb01459026187a4aaa1c80fd1e0f3");*/
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

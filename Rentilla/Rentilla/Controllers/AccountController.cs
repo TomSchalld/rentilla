@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Facebook;
 using Rentilla.Models;
 using System.Diagnostics;
 
@@ -439,7 +440,7 @@ namespace Rentilla.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-
+        
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
