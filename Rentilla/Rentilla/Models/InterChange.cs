@@ -17,11 +17,8 @@ namespace Rentilla.Models
         [Required(ErrorMessage = "Allowance is required.")]
         public Allowance Allowance { get; set; }
     }
-    public class InterChangeDBContext : DbContext
-    {
-        public  DbSet<InterChange> InterChanges { get; set; }
-
-    }
+ 
+   
     public class Offer : InterChange
     {
         public LinkedList<Demand> Demands { get; set; }
@@ -38,5 +35,15 @@ namespace Rentilla.Models
         public LinkedList<Offer> Offers { get; set; }
     
     }
-    
+    public class OfferDBContext : DbContext
+    {
+        public DbSet<Offer> Offers { get; set; }
+
+    }
+    public class DemandDBContext : DbContext
+    {
+        public DbSet<Demand> Demands { get; set; }
+
+    }
+
 }
