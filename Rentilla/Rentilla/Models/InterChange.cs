@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Rentilla.Models
     public class InterChange
     {
         public int ID { get; set; }
+        public string UID { get; set; }
         [Required(ErrorMessage = "Title is required.")]
         public string Titel { get; set; }
         [Required(ErrorMessage = "Description is required.")]
