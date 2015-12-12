@@ -353,7 +353,6 @@ namespace Rentilla.Controllers
                 // Get the current application user
 
                 ApplicationUser Model = UserManager.FindById(User.Identity.GetUserId());
-
                 // Update the details
                 Model.Email = model.Email;
                 Model.DateOfBirth = model.DateOfBirth;
