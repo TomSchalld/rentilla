@@ -101,5 +101,13 @@ namespace Rentilla.Models
         public string LastName { get; set; }
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        [Display(Name = "Appartment Number")]
+        public string AppartementNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Building Number")]
+        public ApplicationUser.Building BuildingNumber { get; set; }
     }
 }

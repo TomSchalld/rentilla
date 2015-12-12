@@ -340,6 +340,8 @@ namespace Rentilla.Controllers
             oldUser.LastName = Model.LastName;
             oldUser.Email = Model.Email;
             oldUser.DateOfBirth = Model.DateOfBirth;
+            oldUser.BuildingNumber = Model.BuildingNumber;
+            oldUser.AppartementNumber = Model.AppartementNumber;
 
             return View(oldUser);
         }
@@ -359,21 +361,17 @@ namespace Rentilla.Controllers
                 Model.FirstName = model.FirstName;
                 Model.LastName = model.LastName;
                 Model.UserName = model.FirstName + "." + model.LastName;
-                //Model.Address = model.Address;
+                Model.AppartementNumber = model.AppartementNumber;
+                Model.BuildingNumber = model.BuildingNumber;
 
-                try
+                IdentityResult result = await UserManager.UpdateAsync(Model);
+                @Session["username"] = Model.UserName;
+                // However, it always succeeds inspite of not updating the database
+                if (!result.Succeeded)
                 {
-                    IdentityResult result = await UserManager.UpdateAsync(Model);
-                    // However, it always succeeds inspite of not updating the database
-                    if (!result.Succeeded)
-                    {
-                        AddErrors(result);
-                    }
+                    AddErrors(result);
                 }
-                catch (Exception e)
-                {
-
-                }
+    
             }
 
             return RedirectToAction("Manager");
