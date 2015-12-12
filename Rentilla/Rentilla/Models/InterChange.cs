@@ -19,8 +19,31 @@ namespace Rentilla.Models
         [Required(ErrorMessage = "An allowance is required.")]
         public Allowance Allowance { get; set; }
     }
- 
-   
+    public class OfferToDemand : InterChange
+    {
+
+    }
+    public class DemandToOffer : InterChange
+    {
+
+    }
+    public enum AllowanceType
+    {
+        Money,
+        Food,
+        Nothing,
+        Other
+    }
+    public class Allowance
+    {
+        public int ID { get; set; }
+        [Required(ErrorMessage = "Type is required.")]
+        public AllowanceType TypeOfAllowance { get; set; }
+        [Required(ErrorMessage = "Description is required.")]
+        public string Description { get; set; }
+
+    }
+
     public class Offer : InterChange
     {
         public List<DemandToOffer> DemandsToOffer { get; set; }
@@ -40,35 +63,20 @@ namespace Rentilla.Models
         public DateTime DateStart { get; set; }
         //[Required(ErrorMessage = "End Date is required.")]
         public DateTime DateEnd { get; set; }
-        public LinkedList<OfferToDemand> OffersToDemand { get; set; }
+        public List<OfferToDemand> OffersToDemand { get; set; }
     
-    }
-    public class OfferToDemand :InterChange
-    {
-
-    }
-    public class DemandToOffer : InterChange
-    {
-
     }
     public class OfferDBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
-        
+        public DbSet<OfferToDemand> OffersToDemands { get; set; }
 
 
     }
     public class DemandDBContext : DbContext
     {
         public DbSet<Demand> Demands { get; set; }
-
-        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        }*/
-
+        public DbSet<DemandToOffer> DemandsToOffers { get; set; }
     }
 
 }
