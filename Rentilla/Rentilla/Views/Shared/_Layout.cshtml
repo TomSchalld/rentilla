@@ -3,59 +3,91 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - RENTILLA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '971967062849358',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
+    <div id="wrap">
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div class="navbar navbar-inverse navbar-fixed-top" id="header" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    @Html.ActionLink("RENTILLA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Tous les events", "ListEvents", "Event", null, new { @class = "text-nav-header" })</li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">News <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Toutes les news", "ListNews", "news", null, new { @class = "text-nav-header" })</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Network <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Promotions", "ListPromo", "Network", null, new { @class = "text-nav-header" })</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Information <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Présentation", "Association", "Association", new { pPage = "Présentation" }, new { @class = "text-nav-header" })</li>
+                                <li>@Html.ActionLink("Conseil Jedi", "Association", "Association", new { pPage = "Conseil Jedi" }, new { @class = "text-nav-header" })</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-2">
+                <a href="http://www.twitter.com/Assoc_FIAI" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a>
+                <a href="http://www.facebook.com/assocFIAI" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                @Html.ActionLink("Legal mentions", "Association", "Association", new { pPage = "Mentions Légales" }, null)<br />
+                @Html.ActionLink("Statuts", "Association", "Association", new { pPage = "Statuts" }, null)
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                @Html.ActionLink("Friends", "Association", "Association", new { pPage = "Partenaires" }, null)<br />
+                @Html.ActionLink("Contact us", "Association", "Association", new { pPage = "Contact" }, null)
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                <p>&copy; @DateTime.Now.Year - Rentilla Corp<br /></p>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+
 
     @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/main")
+    @Scripts.Render("~/bundles/konami")
+    @Scripts.Render("~/bundles/design")
+    @Scripts.Render("~/bundles/modalform")
     @RenderSection("scripts", required: false)
 </body>
 </html>
