@@ -54,7 +54,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Adress.BuildingNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownList("Building")
+            @Html.EnumDropDownListFor(m => m.Adress.BuildingNumber, htmlAttributes: new { @class = "form-control" })
         </div>
     </div>
 
