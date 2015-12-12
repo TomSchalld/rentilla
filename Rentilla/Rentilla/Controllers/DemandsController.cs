@@ -1,8 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Rentilla.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Rentilla.Controllers
 {
@@ -42,8 +47,9 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description")] Demand demand)
+        public ActionResult Create([Bind(Include = "ID,Accepted,DateStart,DateEnd,UID,Titel,Description,Allowance,AllowanceDescription")] Demand demand)
         {
+            demand.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Demands.Add(demand);
@@ -74,7 +80,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description")] Demand demand)
+        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,UID,Titel,Description,Allowance,AllowanceDescription")] Demand demand)
         {
             if (ModelState.IsValid)
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Rentilla.Models.Demand>
+﻿@model IEnumerable<Rentilla.Models.Offer>
 
 @{
     ViewBag.Title = "Index";
@@ -11,18 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Accepted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateEnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Titel)
         </th>
@@ -40,18 +28,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Accepted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateEnd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UID)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Titel)
         </td>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Rentilla.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Rentilla.Controllers
 {
@@ -46,8 +47,9 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Titel,Description")] Offer offer)
+        public ActionResult Create([Bind(Include = "ID,UID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
         {
+            offer.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Offers.Add(offer);
@@ -78,7 +80,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Titel,Description")] Offer offer)
+        public ActionResult Edit([Bind(Include = "ID,UID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
         {
             if (ModelState.IsValid)
             {

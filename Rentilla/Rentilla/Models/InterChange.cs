@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Rentilla.Models
 {
-    public enum AllowanceType
+    public enum Allowance
     {
         Money,
         Food,
@@ -19,12 +20,12 @@ namespace Rentilla.Models
     public class InterChange
     {
         public int ID { get; set; }
+        public string UID { get; set; }
         [Required(ErrorMessage = "Title is required.")]
         public string Titel { get; set; }
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
-        [Required(ErrorMessage = "Type is required.")]
-        public AllowanceType TypeOfAllowance { get; set; }
+        public Allowance Allowance { get; set; }
         [Required(ErrorMessage = "Description for the Allowance is required.")]
         public string AllowanceDescription { get; set; }
     }
@@ -61,6 +62,7 @@ namespace Rentilla.Models
     }
     public class InterchangeDBContext : DbContext
     {
+
         public DbSet<Offer> Offers { get; set; }
         public DbSet<OfferToDem> OffersToDemands { get; set; }
         public DbSet<Demand> Demands { get; set; }
