@@ -155,7 +155,7 @@ namespace Rentilla.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FirstName + "."+ model.LastName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, Address = model.Address, Picture = "", };
+                var user = new ApplicationUser { UserName = model.FirstName + "."+ model.LastName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, DateOfBirth = model.DateOfBirth, Address = model.Address, Picture = "" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
