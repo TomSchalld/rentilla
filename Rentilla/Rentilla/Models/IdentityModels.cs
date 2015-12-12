@@ -27,11 +27,13 @@ namespace Rentilla.Models
         [Required]
         [Display(Name = "Appartment Number")]
         public string AppartementNumber { get; set; }
+
         public enum Building
         {
             A,
             B
         }
+
         [Required]
         [Display(Name = "Building Number")]
         public Building BuildingNumber { get; set; }

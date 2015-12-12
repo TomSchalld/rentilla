@@ -92,7 +92,12 @@ namespace Rentilla.Models
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public Address Address { get; set; }
+        [Display(Name = "Appartment Number")]
+        public string AppartementNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Building Number")]
+        public ApplicationUser.Building BuildingNumber { get; set; }
     }
 
 
