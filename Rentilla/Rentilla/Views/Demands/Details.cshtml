@@ -1,0 +1,82 @@
+﻿@model Rentilla.Models.Demand
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Demand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Accepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accepted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allowance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allowance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowanceDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowanceDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
