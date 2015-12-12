@@ -16,14 +16,37 @@ namespace Rentilla.Models
         public string Titel { get; set; }
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
-        [Required(ErrorMessage = "Allowance is required.")]
+        [Required(ErrorMessage = "An allowance is required.")]
         public Allowance Allowance { get; set; }
     }
- 
-   
+    public class OfferToDem : InterChange
+    {
+
+    }
+    public class DemandToOff : InterChange
+    {
+
+    }
+    public enum AllowanceType
+    {
+        Money,
+        Food,
+        Nothing,
+        Other
+    }
+    public class Allowance
+    {
+        public int ID { get; set; }
+        [Required(ErrorMessage = "Type is required.")]
+        public AllowanceType TypeOfAllowance { get; set; }
+        [Required(ErrorMessage = "Description is required.")]
+        public string Description { get; set; }
+
+    }
+
     public class Offer : InterChange
     {
-        public List<Demand> Demands { get; set; }
+        public List<DemandToOff> DemandsToOffer { get; set; }
        
 
     }
@@ -36,34 +59,24 @@ namespace Rentilla.Models
     public class Demand : InterChange
     {
         public Acceptance Accepted { get; set; } //0 - No answer yet, 1 - Accepted, 2 - Refused
-        [Required(ErrorMessage = "Start Date is required.")]
+       // [Required(ErrorMessage = "Start Date is required.")]
         public DateTime DateStart { get; set; }
-        [Required(ErrorMessage = "End Date is required.")]
+        //[Required(ErrorMessage = "End Date is required.")]
         public DateTime DateEnd { get; set; }
-        public LinkedList<Offer> Offers { get; set; }
+        public List<OfferToDem> OffersToDemand { get; set; }
     
     }
     public class OfferDBContext : DbContext
     {
         public DbSet<Offer> Offers { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        }
-
-
+        public DbSet<OfferToDem> OffersToDemands { get; set; }
+        
     }
     public class DemandDBContext : DbContext
     {
         public DbSet<Demand> Demands { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        }
+        public DbSet<DemandToOff> DemandsToOffers { get; set; }
+       
 
     }
 
