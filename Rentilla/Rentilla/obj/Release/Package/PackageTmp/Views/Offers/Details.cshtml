@@ -1,5 +1,6 @@
 ﻿@model Rentilla.Models.Offer
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -10,6 +11,14 @@
     <h4>Offer</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UID)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Titel)
         </dt>
@@ -43,7 +52,34 @@
         </dd>
 
     </dl>
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <th>Titel</th>
+            <th>Allowance</th>
+            <th>Allowance Description</th>
+        </tr>
+
+        @foreach (var item in Model.DemandsToOffer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Allowance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllowanceDescription)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
