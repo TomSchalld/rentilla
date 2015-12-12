@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Rentilla.Models;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace Rentilla
 {
@@ -55,7 +56,7 @@ namespace Rentilla
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            /*var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
             {
                 AppId = ConfigurationManager.AppSettings.Get("971967062849358"),
                 AppSecret = ConfigurationManager.AppSettings.Get("500bb01459026187a4aaa1c80fd1e0f3"),
@@ -73,14 +74,15 @@ namespace Rentilla
 
                         }
                         return Task.FromResult(0);
+                        
                     }
                 }
 
             };
-            app.UseFacebookAuthentication(facebookOptions);
-           /* app.UseFacebookAuthentication(
-              appId: "971967062849358",
-               appSecret: "500bb01459026187a4aaa1c80fd1e0f3");*/
+            app.UseFacebookAuthentication(facebookOptions);*/
+            //app.UseFacebookAuthentication(
+              //appId: "971967062849358",
+               //appSecret: "500bb01459026187a4aaa1c80fd1e0f3");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
