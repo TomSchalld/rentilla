@@ -248,16 +248,16 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Manage\Manager.cshtml" />
-    <Content Include="Views\Demands\Create.cshtml" />
-    <Content Include="Views\Demands\Delete.cshtml" />
-    <Content Include="Views\Demands\Details.cshtml" />
-    <Content Include="Views\Demands\Edit.cshtml" />
-    <Content Include="Views\Demands\Index.cshtml" />
     <Content Include="Views\Offers\Create.cshtml" />
     <Content Include="Views\Offers\Delete.cshtml" />
     <Content Include="Views\Offers\Details.cshtml" />
     <Content Include="Views\Offers\Edit.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\Demands\Create.cshtml" />
+    <Content Include="Views\Demands\Delete.cshtml" />
+    <Content Include="Views\Demands\Details.cshtml" />
+    <Content Include="Views\Demands\Edit.cshtml" />
+    <Content Include="Views\Demands\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
