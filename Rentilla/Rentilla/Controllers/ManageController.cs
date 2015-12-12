@@ -332,16 +332,21 @@ namespace Rentilla.Controllers
         }
         //
         // GET: /Manage/Manage
-        [AllowAnonymous]
-        public ActionResult Manage()
+        public ActionResult Manager()
         {
-            return View();
+            ApplicationUser Model = UserManager.FindById(User.Identity.GetUserId());
+            EditProfileViewModel oldUser = new EditProfileViewModel();
+            oldUser.FirstName = Model.FirstName;
+            oldUser.LastName = Model.LastName;
+            oldUser.Email = Model.Email;
+            oldUser.DateOfBirth = Model.DateOfBirth;
+
+            return View(oldUser);
         }
 
         [HttpPost]
-        [ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Manage(EditProfileViewModel model)
+        public async Task<ActionResult> Manager(EditProfileViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -355,18 +360,24 @@ namespace Rentilla.Controllers
                 Model.FirstName = model.FirstName;
                 Model.LastName = model.LastName;
                 Model.UserName = model.FirstName + "." + model.LastName;
-                Model.Address = model.Address;
+                //Model.Address = model.Address;
 
-                IdentityResult result = await UserManager.UpdateAsync(Model);
-
-                // However, it always succeeds inspite of not updating the database
-                if (!result.Succeeded)
+                try
                 {
-                    AddErrors(result);
+                    IdentityResult result = await UserManager.UpdateAsync(Model);
+                    // However, it always succeeds inspite of not updating the database
+                    if (!result.Succeeded)
+                    {
+                        AddErrors(result);
+                    }
+                }
+                catch (Exception e)
+                {
+
                 }
             }
 
-            return RedirectToAction("Manage");
+            return RedirectToAction("Manager");
         }
 
         #region Helpers
