@@ -92,7 +92,7 @@ namespace Rentilla.Models
         [Required]
         public Address Adress { get; set; }
     }
-}
+
 
     public class ResetPasswordViewModel
     {
