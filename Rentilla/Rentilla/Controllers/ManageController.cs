@@ -342,6 +342,7 @@ namespace Rentilla.Controllers
             oldUser.DateOfBirth = Model.DateOfBirth;
             oldUser.BuildingNumber = Model.BuildingNumber;
             oldUser.AppartementNumber = Model.AppartementNumber;
+            ViewBag.dateString = oldUser.DateOfBirth.ToString("yyyy-MM-dd");
 
             return View(oldUser);
         }
