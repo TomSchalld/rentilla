@@ -7,7 +7,7 @@
 <hr />
 
 <h2>Role Add to User</h2>
-
+<br />
 @using (Html.BeginForm("RoleAddToUser", "Roles"))
 {
     @Html.AntiForgeryToken()
@@ -16,13 +16,13 @@
     <p>
         Username : @Html.TextBox("UserName")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
-
+        <input type="submit" value="Save" />
     </p>
 
-    <input type="submit" value="Save" />
 }
 <hr />
 <h2>Get Roles for a User</h2>
+<br/>
 @using (Html.BeginForm("GetRoles", "Roles"))
 {
     @Html.AntiForgeryToken()
@@ -46,8 +46,8 @@
 }
 
 <hr />
-<h2>Delete A User from a Role</ h2>
-
+<h2>Delete A User from a Role</h2>
+<br />
 @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
 {
     @Html.AntiForgeryToken()
@@ -56,8 +56,7 @@
     <p>
         Username : @Html.TextBox("UserName")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
-
+        <input type="submit" value="Delete this user from Role" />
     </p>
 
-    <input type="submit" value="Delete this user from Role" />
 }

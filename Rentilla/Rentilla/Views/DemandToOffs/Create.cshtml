@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create a demand for this offer</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,13 +12,13 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Demand</h4>
+        <h4>You want to create a demand for this offer</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Accepted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Accepted, htmlAttributes: new { @class = "form-control" })
+                @Html.EnumDropDownListFor(model => model.Accepted, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.Accepted, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Title", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Titel, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "width: 280px; height: 100px;" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,24 +65,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AllowanceDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Description of the Allowance", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AllowanceDescription, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AllowanceDescription, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <hr />
+        <div class="form-group row text-center">
+            <div class="col-md-2 col-sm-2 col-xs-6">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default hvr-icon-back NewsBtnDelet" })
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-6 col-xs-offset-0">
+                <button type="submit" name="pAction" class="btn btn-primary hvr-icon-fade NewsBtnDelet" value="Create">Create</button>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

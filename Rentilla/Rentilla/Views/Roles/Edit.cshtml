@@ -12,11 +12,13 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model => model.Id)
-    <div>
-        Role name
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Role name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.TextBoxFor(model => model.Name)
-    </p>
-    <input type="submit" value="Save" />
+    <button type="submit" value="Save" class="btn btn-primary hvr-icon-wobble-horizontal" id="buttonHover">Save</button>
 }
