@@ -11,7 +11,11 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="Profil">
-
+                    @if (User.IsInRole("administrator"))
+                    {
+                    <li role="presentation">@Html.ActionLink("Manage Roles", "Index", "Roles", null, new { @class = "dropdown-item" })</li>
+                    <li role="presentation" class="divider"></li>
+                    }
                     <li role="presentation">@Html.ActionLink("Update information", "Manager", "Manage", null, new { @class = "dropdown-item" })</li>
                     <li role="presentation">@Html.ActionLink("Update password", "ChangePassword", "Manage", null, new { @class = "dropdown-item" })</li>
                     <li role="presentation" class="divider"></li>
