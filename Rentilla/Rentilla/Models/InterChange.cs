@@ -34,7 +34,7 @@ namespace Rentilla.Models
        
         public int DemandId { get; set; }
     }
-    public class DemandToOff : InterChange
+    public class DemandToOff : Demand
     {
         
         public int OfferId { get; set; }
