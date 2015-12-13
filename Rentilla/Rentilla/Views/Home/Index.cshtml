@@ -9,7 +9,7 @@
             Username
         </th>
         <th>
-            Titel
+            Title
         </th>
         <th>
             Description
@@ -42,9 +42,7 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
-                @Html.ActionLink("Demands to Offer", "../DemandToOffs/Index", new { id = item.ID })
+                @Html.ActionLink("Detail", "../DemandToOffs/Index", new { id = item.ID })
             </td>
         </tr>
     }
@@ -58,10 +56,10 @@
             Username
         </th>
         <th>
-            Titel
+            Title
         </th>
         <th>
-            Accepted
+            Answered?
         </th>
         <th>
             Start Date
@@ -110,9 +108,7 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
-                @Html.ActionLink("Offers to Demand", "../OfferToDems/Index", new { id = item.ID })
+                @Html.ActionLink("Detail", "../OfferToDems/Index", new { id = item.ID })
             </td>
         </tr>
     }

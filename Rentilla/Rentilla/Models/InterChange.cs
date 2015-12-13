@@ -55,9 +55,11 @@ namespace Rentilla.Models
     public class Demand : InterChange
     {
         public Acceptance Accepted { get; set; } //0 - No answer yet, 1 - Accepted, 2 - Refused
-       // [Required(ErrorMessage = "Start Date is required.")]
+                                                 // [Required(ErrorMessage = "Start Date is required.")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime DateStart { get; set; }
         //[Required(ErrorMessage = "End Date is required.")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime DateEnd { get; set; }
         public List<OfferToDem> OffersToDemand { get; set; }
     
