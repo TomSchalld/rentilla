@@ -2,13 +2,118 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Rentilla</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<h4>Newest Offers</h4>
+<table class="table">
+    <tr>
+        <th>
+            UID
+        </th>
+        <th>
+            Titel
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Allowance
+        </th>
+        <th>
+            Allowance Description
+        </th>
+        <th></th>
+    </tr>
 
-<div class="row">
-    @Html.ActionLink("Offers", "Index", "Offers")
-    @Html.ActionLink("Demands", "Index", "Demands")
-</div>
+    @foreach (var item in ViewBag.LastThreeOffersList)
+    {
+        <tr>
+            <td>
+                @item.UID
+            </td>
+            <td>
+                @item.Titel
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Allowance
+            </td>
+            <td>
+                @item.AllowanceDescription
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
+                @Html.ActionLink("Demands to Offer", "../DemandToOffs/Index", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<hr />
+<h4>Newest Demands</h4>
+<table class="table">
+    <tr>
+        <th>
+            Accepted
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th>
+            End Date
+        </th>
+        <th>
+            Username
+        </th>
+        <th>
+            Titel
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Allowance
+        </th>
+        <th>
+            Allowance Description
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.LastThreeDemandsList)
+    {
+        <tr>
+            <td>
+                @item.Accepted
+            </td>
+            <td>
+                @item.DateStart
+            </td>
+            <td>
+                @item.DateEnd
+            </td>
+            <td>
+                @item.UID
+            </td>
+            <td>
+                @item.Titel
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.Allowance
+            </td>
+            <td>
+                @item.AllowanceDescription
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Offers to Demand", "../OfferToDems/Index", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
