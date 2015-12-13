@@ -30,7 +30,10 @@ namespace Rentilla.Controllers
                 
                 ViewBag.Username = uname.UserName;
                 offersTodemands = offersTodemands.Where(s => s.DemandId == id);
-               
+                foreach (var item in offersTodemands)
+                {
+                    item.UID = (from u in adbc.Users where u.Id.Contains(item.UID) select u.UserName).FirstOrDefault();
+                }
                 ViewBag.Demand = demand;
                 ViewBag.DemandId = id;
             }

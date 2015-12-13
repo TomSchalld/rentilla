@@ -14,10 +14,14 @@ namespace Rentilla.Controllers
     public class OffersController : Controller
     {
         private InterchangeDBContext db = new InterchangeDBContext();
-
+        private ApplicationDbContext adbc = new ApplicationDbContext();
         // GET: Offers
         public ActionResult Index()
         {
+            foreach (var item in db.Offers)
+            {
+                item.UID = (from u in adbc.Users where u.Id.Contains(item.UID) select u.UserName).FirstOrDefault();
+            }
             return View(db.Offers.ToList());
         }
 
