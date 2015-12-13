@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Rentilla.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Rentilla.Controllers
 {
@@ -15,9 +16,17 @@ namespace Rentilla.Controllers
         private InterchangeDBContext db = new InterchangeDBContext();
 
         // GET: DemandToOffs
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.DemandsToOffers.ToList());
+            var demandsToOffers = from m in db.DemandsToOffers
+                                  select m;
+            if (id != null)
+            {
+                demandsToOffers = demandsToOffers.Where(s => s.OfferId == id);
+                ViewBag.OfferId = id;
+            }
+            return View(demandsToOffers);
+            //return View(db.DemandsToOffers.ToList());
         }
 
         // GET: DemandToOffs/Details/5
@@ -36,7 +45,7 @@ namespace Rentilla.Controllers
         }
 
         // GET: DemandToOffs/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             return View();
         }
@@ -46,13 +55,19 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UID,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff)
+        public ActionResult Create([Bind(Include = "ID,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff, int? id)
         {
+            if (id != null)
+            {
+                demandToOff.OfferId = (int)id;
+
+            }
+            demandToOff.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.DemandsToOffers.Add(demandToOff);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", demandToOff.OfferId);
             }
 
             return View(demandToOff);
@@ -84,7 +99,7 @@ namespace Rentilla.Controllers
             {
                 db.Entry(demandToOff).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", demandToOff.OfferId);
             }
             return View(demandToOff);
         }
@@ -112,7 +127,7 @@ namespace Rentilla.Controllers
             DemandToOff demandToOff = db.DemandsToOffers.Find(id);
             db.DemandsToOffers.Remove(demandToOff);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", demandToOff.OfferId);
         }
 
         protected override void Dispose(bool disposing)
