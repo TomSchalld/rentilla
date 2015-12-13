@@ -4,7 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Offer n°@ViewBag.OfferId</h2>
+<h2>Offer n°@ViewBag.OfferId
+    @if (User.IsInRole("administrator"))
+    {
+        @Html.ActionLink("Edit", "Edit", "Offers", new { id = ViewBag.OfferId }, null)
+        @Html.ActionLink(" Delete", "Delete", "Offers", new { id = ViewBag.OfferId }, null)
+    }</h2>
+
 
 <div>
     <hr />
