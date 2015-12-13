@@ -41,6 +41,7 @@ namespace Rentilla.Controllers
             //return View(db.DemandsToOffers.ToList());
         }
 
+
         // GET: DemandToOffs/Details/5
         public ActionResult Details(int? id)
         {
@@ -56,12 +57,14 @@ namespace Rentilla.Controllers
             return View(demandToOff);
         }
 
+        [Authorize]
         // GET: DemandToOffs/Create
         public ActionResult Create(int? id)
         {
             return View();
         }
 
+        [Authorize]
         // POST: DemandToOffs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -85,6 +88,7 @@ namespace Rentilla.Controllers
             return View(demandToOff);
         }
 
+        [Authorize]
         // GET: DemandToOffs/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -100,6 +104,7 @@ namespace Rentilla.Controllers
             return View(demandToOff);
         }
 
+        [Authorize]
         // POST: DemandToOffs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -116,6 +121,7 @@ namespace Rentilla.Controllers
             return View(demandToOff);
         }
 
+        [Authorize]
         // GET: DemandToOffs/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -131,6 +137,7 @@ namespace Rentilla.Controllers
             return View(demandToOff);
         }
 
+        [Authorize]
         // POST: DemandToOffs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

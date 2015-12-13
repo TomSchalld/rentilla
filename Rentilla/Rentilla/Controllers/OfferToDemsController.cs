@@ -56,6 +56,7 @@ namespace Rentilla.Controllers
             return View(offerToDem);
         }
 
+        [Authorize]
         // GET: OfferToDems/Create
         public ActionResult Create(int? id)
         {
@@ -63,6 +64,7 @@ namespace Rentilla.Controllers
             return View();
         }
 
+        [Authorize]
         // POST: OfferToDems/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -86,6 +88,7 @@ namespace Rentilla.Controllers
             return View(offerToDem);
         }
 
+        [Authorize]
         // GET: OfferToDems/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -101,6 +104,7 @@ namespace Rentilla.Controllers
             return View(offerToDem);
         }
 
+        [Authorize]
         // POST: OfferToDems/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -117,6 +121,7 @@ namespace Rentilla.Controllers
             return View(offerToDem);
         }
 
+        [Authorize]
         // GET: OfferToDems/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -132,6 +137,7 @@ namespace Rentilla.Controllers
             return View(offerToDem);
         }
 
+        [Authorize]
         // POST: OfferToDems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

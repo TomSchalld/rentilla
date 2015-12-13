@@ -23,11 +23,24 @@ namespace Rentilla.Controllers
             foreach (var item in lastThreeOffers)
             {
                 item.UID = (from u in adbc.Users where u.Id.Contains(item.UID) select u.UserName).FirstOrDefault();
+
+                if(item.Description.Length > 10)
+                {
+                    item.Description = item.Description.Substring(0, 10);
+                    item.Description += "...";
+                }
             }
             foreach (var item in lastThreeDemands)
             {
                 item.UID = (from u in adbc.Users where u.Id.Contains(item.UID) select u.UserName).FirstOrDefault();
+
+                if (item.Description.Length > 10)
+                {
+                    item.Description = item.Description.Substring(0, 10);
+                    item.Description += "...";
+                }
             }
+
             ViewBag.LastThreeOffersList = lastThreeOffers.ToList();
             ViewBag.LastThreeDemandsList = lastThreeDemands.ToList();
             return View();

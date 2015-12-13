@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     heigtWrap = $('#wrap').css('height');
     $(".body-content").css("min-height", heigtWrap);
+    $('#summernote').summernote();
 
     $.ajaxSetup({ cache: false });
 
