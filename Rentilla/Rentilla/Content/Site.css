@@ -77,7 +77,6 @@ html {
 
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
     height: 100%;
 }
 
@@ -159,7 +158,6 @@ a:hover {
     height: 100%;
     margin: 0 auto -37px;
     background-color: #ededed;
-    background-image: url("/Content/img/logo4.png");
     background-position: center; 
     background-size: 96%;
     background-repeat: no-repeat;
@@ -1277,7 +1275,7 @@ background-color: #eee;
 }
 
 .hvr-icon-search:before {
-  content: "\f002";
+  content: "\f067";
   position: absolute;
   right: 1em;
   opacity: 1;
