@@ -78,6 +78,7 @@ namespace Rentilla.Controllers
 
             }
             demandToOff.UID = User.Identity.GetUserId();
+            //demandToOff.Accepted = 0;
             if (ModelState.IsValid)
             {
                 db.DemandsToOffers.Add(demandToOff);

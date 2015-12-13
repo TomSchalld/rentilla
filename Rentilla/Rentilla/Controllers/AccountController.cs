@@ -52,6 +52,7 @@ namespace Rentilla.Controllers
             }
         }
 
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

@@ -7,11 +7,21 @@
         <ul class="nav navbar-nav navbar-right dropdown" role="menu">
             <li class="dropdown text-nav-header">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;@Session["username"]
+                    <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;
+                    @if (User.IsInRole("administrator")) { 
+                    <strong>[A]@Session["username"]</strong>
+                    }
+                    else {
+                        <strong>@Session["username"]</strong>
+                    } 
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="Profil">
-
+                    @if (User.IsInRole("administrator"))
+                    {
+                    <li role="presentation">@Html.ActionLink("Manage Roles", "Index", "Roles", null, new { @class = "dropdown-item" })</li>
+                    <li role="presentation" class="divider"></li>
+                    }
                     <li role="presentation">@Html.ActionLink("Update information", "Manager", "Manage", null, new { @class = "dropdown-item" })</li>
                     <li role="presentation">@Html.ActionLink("Update password", "ChangePassword", "Manage", null, new { @class = "dropdown-item" })</li>
                     <li role="presentation" class="divider"></li>
