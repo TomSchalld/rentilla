@@ -14,6 +14,7 @@ namespace Rentilla.Controllers
     public class OfferToDemsController : Controller
     {
         private InterchangeDBContext db = new InterchangeDBContext();
+        private ApplicationDbContext adbc = new ApplicationDbContext();
 
         // GET: OfferToDems
         public ActionResult Index(int? id)
@@ -23,7 +24,14 @@ namespace Rentilla.Controllers
                          select m;
             if (id != null)
             {
+                var demand = (from d in db.Demands where d.ID == id select d).FirstOrDefault();
+                var uname = (from u in adbc.Users where u.Id.Contains(demand.UID) select u).FirstOrDefault();
+
+                
+                ViewBag.Username = uname.UserName;
                 offersTodemands = offersTodemands.Where(s => s.DemandId == id);
+               
+                ViewBag.Demand = demand;
                 ViewBag.DemandId = id;
             }
             return View(offersTodemands);
