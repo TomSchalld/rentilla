@@ -34,9 +34,13 @@ namespace Rentilla.Models
        
         public int DemandId { get; set; }
     }
-    public class DemandToOff : Demand
+    public class DemandToOff : InterChange
     {
-        
+        public Acceptance Accepted { get; set; } //0 - No answer yet, 1 - Accepted, 2 - Refused
+        // [Required(ErrorMessage = "Start Date is required.")]
+        public DateTime DateStart { get; set; }
+        //[Required(ErrorMessage = "End Date is required.")]
+        public DateTime DateEnd { get; set; }
         public int OfferId { get; set; }
     }
    
