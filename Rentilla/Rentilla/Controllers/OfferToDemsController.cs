@@ -101,7 +101,7 @@ namespace Rentilla.Controllers
             {
                 db.Entry(offerToDem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index",demandId);
+                return RedirectToAction("Index", offerToDem.DemandId);
             }
             return View(offerToDem);
         }
@@ -129,7 +129,7 @@ namespace Rentilla.Controllers
             OfferToDem offerToDem = db.OffersToDemands.Find(id);
             db.OffersToDemands.Remove(offerToDem);
             db.SaveChanges();
-            return RedirectToAction("Index",demandId);
+            return RedirectToAction("Index", offerToDem.DemandId);
         }
 
         protected override void Dispose(bool disposing)
