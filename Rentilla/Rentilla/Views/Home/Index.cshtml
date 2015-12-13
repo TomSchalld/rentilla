@@ -42,7 +42,9 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Detail", "../DemandToOffs/Index", new { id = item.ID })
+                @Html.ActionLink("Edit", "../Offers/Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "../Offers/Delete", new { id = item.ID })|
+                @Html.ActionLink("Demands to Offer", "../DemandToOffs/Index", new { id = item.ID })
             </td>
         </tr>
     }
@@ -108,7 +110,9 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Detail", "../OfferToDems/Index", new { id = item.ID })
+                @Html.ActionLink("Edit", "../Demands/Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "../Demands/Delete", new { id = item.ID }) |
+                @Html.ActionLink("Offers to Demand", "../OfferToDems/Index", new { id = item.ID })
             </td>
         </tr>
     }
