@@ -40,6 +40,7 @@ namespace Rentilla.Controllers
             return View(demand);
         }
 
+        [Authorize]
         // GET: Demands/Create
         public ActionResult Create()
         {
@@ -64,6 +65,7 @@ namespace Rentilla.Controllers
             return View(demand);
         }
 
+        [Authorize]
         // GET: Demands/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -79,6 +81,7 @@ namespace Rentilla.Controllers
             return View(demand);
         }
 
+        [Authorize]
         // POST: Demands/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -95,6 +98,7 @@ namespace Rentilla.Controllers
             return View(demand);
         }
 
+        [Authorize]
         // GET: Demands/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -110,6 +114,7 @@ namespace Rentilla.Controllers
             return View(demand);
         }
 
+        [Authorize]
         // POST: Demands/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

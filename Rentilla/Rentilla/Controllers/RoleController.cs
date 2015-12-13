@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using A11_RBS.CustomFilters;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Rentilla.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Web.Mvc;
 
 namespace Rentilla.Controllers
 {
+    [Authorize]
+    [AuthLog(Roles = "administrator")]
     public class RoleController : Controller
     {
         ApplicationDbContext context;

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="Controllers\OfferToDemsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="CustomFilters\AuthLogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -382,6 +383,7 @@
     <Content Include="Views\OfferToDems\Details.cshtml" />
     <Content Include="Views\OfferToDems\Edit.cshtml" />
     <Content Include="Views\OfferToDems\Index.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
