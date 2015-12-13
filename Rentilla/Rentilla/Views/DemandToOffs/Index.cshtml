@@ -4,10 +4,60 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Offer</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            Username
+        </dt>
+
+        <dd>
+            @ViewBag.Username
+        </dd>
+
+        <dt>
+            Titel
+        </dt>
+
+        <dd>
+            @ViewBag.Offer.Titel
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @ViewBag.Offer.Description
+        </dd>
+
+        <dt>
+            Allowance
+        </dt>
+
+        <dd>
+            @ViewBag.Offer.Allowance
+        </dd>
+
+        <dt>
+            Allowance Description
+        </dt>
+
+        <dd>
+            @ViewBag.Offer.AllowanceDescription
+        </dd>
+
+    </dl>
+
+</div>
+<hr />
+<h4>Demands for this offer</h4>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.OfferId })
 </p>
 <table class="table">
     <tr>

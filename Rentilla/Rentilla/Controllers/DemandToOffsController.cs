@@ -14,14 +14,21 @@ namespace Rentilla.Controllers
     public class DemandToOffsController : Controller
     {
         private InterchangeDBContext db = new InterchangeDBContext();
-
+        private ApplicationDbContext adbc = new ApplicationDbContext();
         // GET: DemandToOffs
         public ActionResult Index(int? id)
         {
+           
             var demandsToOffers = from m in db.DemandsToOffers
                                   select m;
+            
             if (id != null)
             {
+                var offer = (from d in db.Offers where d.ID == id select d).FirstOrDefault();
+                var uname = (from u in adbc.Users where u.Id.Contains(offer.UID) select u).FirstOrDefault();
+
+                ViewBag.Offer = offer;
+                ViewBag.Username = uname.UserName;
                 demandsToOffers = demandsToOffers.Where(s => s.OfferId == id);
                 ViewBag.OfferId = id;
             }
