@@ -2,7 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<h4>Newest Offers</h4>
+<h1>Newest Offers</h1>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -42,16 +43,20 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Edit", "../Offers/Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "../Offers/Delete", new { id = item.ID })|
-                @Html.ActionLink("Demands to Offer", "../DemandToOffs/Index", new { id = item.ID })
+                @Html.ActionLink("Detail", "../DemandToOffs/Index", new { id = item.ID })
+                @if (User.IsInRole("administrator"))
+                {
+                    @Html.ActionLink(" | Edit", "../Offers/Edit", new { id = item.ID })
+                    @Html.ActionLink(" | Delete", "../Offers/Delete", new { id = item.ID })
+                }
             </td>
         </tr>
     }
 
 </table>
 <hr />
-<h4>Newest Demands</h4>
+<h1>Newest Demands</h1>
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -110,9 +115,12 @@
                 @item.AllowanceDescription
             </td>
             <td>
-                @Html.ActionLink("Edit", "../Demands/Edit", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "../Demands/Delete", new { id = item.ID }) |
-                @Html.ActionLink("Offers to Demand", "../OfferToDems/Index", new { id = item.ID })
+                @Html.ActionLink("Detail", "../OfferToDems/Index", new { id = item.ID })
+                @if (User.IsInRole("administrator"))
+                {
+                    @Html.ActionLink(" | Edit", "../Demands/Edit", new { id = item.ID })
+                @Html.ActionLink(" | Delete", "../Demands/Delete", new { id = item.ID })
+                }
             </td>
         </tr>
     }
