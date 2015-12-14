@@ -4,13 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Demand</h2>
+<h2>
+    Demand n°@ViewBag.DemandId
+    @if (User.IsInRole("administrator"))
+    {
+        @Html.ActionLink("Edit", "Edit", "Demands", new { id = ViewBag.OfferId }, null)
+        @Html.ActionLink(" Delete", "Delete", "Demands", new { id = ViewBag.OfferId }, null)
+    }
+</h2>
 
 <div>
 <hr />
 <dl class="dl-horizontal">
     <dt>
-        Accepted
+        State
     </dt>
 
     <dd>
@@ -42,7 +49,7 @@
     </dd>
 
     <dt>
-        Titel
+        Title
     </dt>
 
     <dd>
@@ -76,19 +83,23 @@
 </dl>
 
 </div>
-<hr />
-<h4>Offers to this demand</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create", new { id = ViewBag.DemandId })
-</p>
-<table class="table">
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <h3>
+            <a href="">Offers to this demand</a>
+            @Html.ActionLink(" ", "Create", "OfferToDems", new { id = ViewBag.DemandId }, new { @class = "fa fa-plus-square-o fa-3", @title = "Create offer" })
+        </h3>
+    </div>
+</div>
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UID)
+            Username
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Titel)
+            Title
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -97,7 +108,7 @@
             @Html.DisplayNameFor(model => model.Allowance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AllowanceDescription)
+            Description of the allowance
         </th>
         <th></th>
     </tr>
@@ -120,9 +131,11 @@
             @Html.DisplayFor(modelItem => item.AllowanceDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @if (User.IsInRole("administrator"))
+                {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                @Html.ActionLink(" Delete", "Delete", new { id = item.ID })
+            }
         </td>
     </tr>
 }
