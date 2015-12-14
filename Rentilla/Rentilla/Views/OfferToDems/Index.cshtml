@@ -8,8 +8,8 @@
     Demand n°@ViewBag.DemandId
     @if (User.IsInRole("administrator"))
     {
-        @Html.ActionLink("Edit", "Edit", "Demands", new { id = ViewBag.OfferId }, null)
-        @Html.ActionLink(" Delete", "Delete", "Demands", new { id = ViewBag.OfferId }, null)
+        @Html.ActionLink("Edit", "Edit", "Demands", new { id = ViewBag.DemandId }, null)
+        @Html.ActionLink(" Delete", "Delete", "Demands", new { id = ViewBag.DemandId }, null)
     }
 </h2>
 
