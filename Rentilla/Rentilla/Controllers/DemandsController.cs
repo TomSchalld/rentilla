@@ -89,6 +89,7 @@ namespace Rentilla.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description,Allowance,AllowanceDescription")] Demand demand)
         {
+            demand.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(demand).State = EntityState.Modified;
