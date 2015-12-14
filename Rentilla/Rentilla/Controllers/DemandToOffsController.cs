@@ -61,6 +61,7 @@ namespace Rentilla.Controllers
         // GET: DemandToOffs/Create
         public ActionResult Create(int? id)
         {
+            ViewBag.ID = id;
             return View();
         }
 

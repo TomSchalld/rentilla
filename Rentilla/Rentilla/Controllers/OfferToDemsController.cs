@@ -60,7 +60,7 @@ namespace Rentilla.Controllers
         // GET: OfferToDems/Create
         public ActionResult Create(int? id)
         {
-            
+            ViewBag.ID = id;
             return View();
         }
 
@@ -75,7 +75,7 @@ namespace Rentilla.Controllers
             if (id != null)
             {
                 offerToDem.DemandId = (int)id;
-
+               
             }
             offerToDem.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
