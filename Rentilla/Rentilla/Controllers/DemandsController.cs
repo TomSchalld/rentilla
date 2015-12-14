@@ -87,7 +87,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,UID,Titel,Description,Allowance,AllowanceDescription")] Demand demand)
+        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description,Allowance,AllowanceDescription")] Demand demand)
         {
             if (ModelState.IsValid)
             {

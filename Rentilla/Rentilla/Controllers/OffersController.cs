@@ -53,7 +53,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
+        public ActionResult Create([Bind(Include = "ID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
         {
             offer.UID = User.Identity.GetUserId();
             if (ModelState.IsValid)
@@ -88,7 +88,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
+        public ActionResult Edit([Bind(Include = "ID,Titel,Description,Allowance,AllowanceDescription")] Offer offer)
         {
             if (ModelState.IsValid)
             {

@@ -70,7 +70,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Accepted,DateStart,DateEnd,UID,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff, int? id)
+        public ActionResult Create([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff, int? id)
         {
             if (id != null)
             {
@@ -111,7 +111,7 @@ namespace Rentilla.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,UID,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff)
+        public ActionResult Edit([Bind(Include = "ID,Accepted,DateStart,DateEnd,Titel,Description,Allowance,AllowanceDescription")] DemandToOff demandToOff)
         {
             if (ModelState.IsValid)
             {

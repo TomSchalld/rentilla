@@ -4,12 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Current Demands</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<div class="row">
+    <div class="col-md-3">
+        <h2>
+            <a href="">Demands</a>
+            @Html.ActionLink(" ", "Create", "Demands", null, new { @class = "fa fa-plus-square-o fa-3", @title = "Create demand" })
+        </h2>
+    </div>
+</div>
+<hr />
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Accepted)
@@ -21,10 +25,10 @@
             @Html.DisplayNameFor(model => model.DateEnd)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UID)
+            Username
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Titel)
+            Title
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -33,7 +37,7 @@
             @Html.DisplayNameFor(model => model.Allowance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AllowanceDescription)
+            Description of the allowance
         </th>
         <th></th>
     </tr>
@@ -65,9 +69,9 @@
             @Html.DisplayFor(modelItem => item.AllowanceDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
-            @Html.ActionLink("Offers to Demand", "../OfferToDems/Index", new { id = item.ID })
+            @Html.ActionLink("Detail", "../OfferToDems/Index", new { id = item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
         </td>
     </tr>
 }
