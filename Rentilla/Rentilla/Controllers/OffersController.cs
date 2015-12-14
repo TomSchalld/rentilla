@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Rentilla.Models;
 using Microsoft.AspNet.Identity;
+using A11_RBS.CustomFilters;
 
 namespace Rentilla.Controllers
 {
@@ -66,6 +67,7 @@ namespace Rentilla.Controllers
             return View(offer);
         }
 
+        [AuthorizeAdminOrOwnerOfPost]
         [Authorize]
         // GET: Offers/Edit/5
         public ActionResult Edit(int? id)
@@ -82,6 +84,7 @@ namespace Rentilla.Controllers
             return View(offer);
         }
 
+        [AuthorizeAdminOrOwnerOfPost]
         [Authorize]
         // POST: Offers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -100,6 +103,7 @@ namespace Rentilla.Controllers
             return View(offer);
         }
 
+        [AuthorizeAdminOrOwnerOfPost]
         [Authorize]
         // GET: Offers/Delete/5
         public ActionResult Delete(int? id)
@@ -116,6 +120,7 @@ namespace Rentilla.Controllers
             return View(offer);
         }
 
+        [AuthorizeAdminOrOwnerOfPost]
         [Authorize]
         // POST: Offers/Delete/5
         [HttpPost, ActionName("Delete")]

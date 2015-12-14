@@ -35,8 +35,8 @@ namespace A11_RBS.CustomFilters
 
         private bool IsOwnerOfPost(string username, string postId)
         {
-            // TODO: you know what to do here
-            throw new NotImplementedException();
+            return false;
+           
         }
     }
 }
